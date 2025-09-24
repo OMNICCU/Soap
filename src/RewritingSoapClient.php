@@ -28,6 +28,6 @@ final class RewritingSoapClient extends \SoapClient
             );
         }
 
-        return parent::__doRequest($request, $location, $action, $version, $one_way);
+        return parent::__doRequest($request, $location, $action, $version, $oneWay);
     }
 }
