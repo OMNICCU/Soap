@@ -24,6 +24,7 @@ final class RewritingSoapClient extends \SoapClient
             1
         );
 
+        var_dump($request);
 
         return parent::__doRequest($request, $location, $action, $version, $one_way);
     }
