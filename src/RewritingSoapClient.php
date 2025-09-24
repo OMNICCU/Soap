@@ -13,13 +13,7 @@ final class RewritingSoapClient extends \SoapClient
     ): ?string {
         $request = preg_replace(
             '/\b(?:\w+:)?MessageId="[^"]*"/',
-            'cmn:MessageId="1"',
-            $request,
-            1
-        );
-        $request = preg_replace(
-            '/(<\w+:Envelope\b)(?![^>]*\bxmlns:cmn=)([^>]*)(>)/',
-            '$1$2 xmlns:cmn="http://www.symxchange.generated.symitar.com/symxcommon"$3',
+            'cmn:MessageId="1"  xmlns:cmn="http://www.symxchange.generated.symitar.com/symxcommon',
             $request,
             1
         );
