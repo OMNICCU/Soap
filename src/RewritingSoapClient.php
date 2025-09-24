@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Soap;
+namespace RicorocksDigitalAgency\Soap;
 
 final class RewritingSoapClient extends \SoapClient
 {
@@ -11,10 +11,19 @@ final class RewritingSoapClient extends \SoapClient
         int $version,
         bool $one_way = false
     ): ?string {
-        // your one-line surgery:
-        // $request = str_replace('FIND_THIS', 'REPLACE_WITH_THIS', $request);
-        // or a precise regex if needed:
-        // $request = preg_replace('/pattern/', 'replacement', $request, 1);
+        $request = preg_replace(
+            '/\b(?:\w+:)?MessageId="[^"]*"/',
+            'cmn:MessageId="1"',
+            $request,
+            1
+        );
+        $request = preg_replace(
+            '/(<\w+:Envelope\b)(?![^>]*\bxmlns:cmn=)([^>]*)(>)/',
+            '$1$2 xmlns:cmn="http://www.symxchange.generated.symitar.com/symxcommon"$3',
+            $request,
+            1
+        );
+
 
         return parent::__doRequest($request, $location, $action, $version, $one_way);
     }

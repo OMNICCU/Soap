@@ -7,7 +7,7 @@ use RicorocksDigitalAgency\Soap\Header;
 use RicorocksDigitalAgency\Soap\Parameters\Builder;
 use RicorocksDigitalAgency\Soap\Response\Response;
 use RicorocksDigitalAgency\Soap\Support\Tracing\Trace;
-use SoapClient;
+use RicorocksDigitalAgency\Soap\RewritingSoapClient as SoapClient;
 use SoapHeader;
 
 class SoapClientRequest implements Request
