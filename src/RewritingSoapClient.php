@@ -17,7 +17,8 @@ final class RewritingSoapClient extends \SoapClient
         string $location,
         string $action,
         int $version,
-        bool $oneWay = false
+        bool $oneWay = false,
+        ?string $uriParserClass = null
     ): ?string {
         if ($this->rewrite) {
             $request = preg_replace(
